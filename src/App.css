@@ -1,0 +1,32 @@
+*{
+    font-family: 'Poppins';
+    font-weight: 600;
+    color: #5D5A88;
+    background-color: #e2e2e2;
+}
+
+.home--content{
+    padding: 100px;
+}
+
+.home--content > h1 {
+    max-width: 400px;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.home--content > p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.navbar-brand{ 
+    color: #69e305!important;
+    font-weight: 700!important;
+    font-size: 22px!important;
+}
+.nav-link{
+    font-size: 18px!important;
+    color: black!important;
+}

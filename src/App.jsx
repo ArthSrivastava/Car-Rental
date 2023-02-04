@@ -19,6 +19,7 @@ function App() {
           <Route path="/" element={<Navigate to="home" />} />
           <Route path="home" element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="about" element={<About />} />
           <Route path="listing/:listingId" element={<ReadListing />} />
           <Route path="list-vehicle" element={<ProtectedRoute><AddListing /></ProtectedRoute>} />
           <Route path="login" element={<Base> <Login /></Base>} />

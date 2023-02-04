@@ -25,7 +25,7 @@ body{
 }
 
 .navbar-brand{ 
-    color: #306b53!important;
+    color: #028117!important;
     font-weight: 700!important;
     font-size: 22px!important;
 }
@@ -33,7 +33,7 @@ body{
     font-size: 18px!important;
     color: black!important;
 }
-
+/* darklone */
 .mx-2 {
     display: inline-block!important;
     background-color: #0e0e55!important;
@@ -56,9 +56,49 @@ body{
   }
   .mx-2:hover {
     background-color: #686ae9!important;
+    cursor: pointer;
+    transform: scale(1.1);
+    
   }
   
+  .my-nav{
+     background-color: rgb(174, 159, 241)!important;
+     box-shadow: 4px 4px;
+     border-radius: 5px;
+    }
+    
+    .nav-items{
+      font-size: 21px!important;
+      font-weight: 600px!important;
+      border-radius: 10px;
+      transition: ease-in-out;
+      transition-delay: 0.30ms!important;
+    }
+    .nav-items:hover{
+      color: rgb(73, 108, 207)!important;
+      cursor: pointer;
+      transform: scale(1.05);
+    filter: brightness(150%);
+  }
   
- .selected {
-    border: 2px solid black !important;
- }
+  .nav-logins button {
+    transition: all 0.3s ease;
+    transform: scale(1);
+  }
+   
+  .nav-logins button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    filter: brightness(120%);
+  }
+
+  .logo{
+    font-weight: 600!important;
+    font-size: 35px!important;
+    text-shadow: 1px 1px;
+  }
+  
+  .selected{
+    border: 2px solid black !important
+  }
+

@@ -11,6 +11,7 @@ import SignUp from "./pages/authentication/SignUp";
 import ProtectedRoute from "./pages/authentication/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import ComparisonPage from "./pages/ComparisonPage";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Navigate to="home" />} />
           <Route path="home" element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="about" element={<About />} />
           <Route path="listing/:listingId" element={<ReadListing />} />
           <Route path="list-vehicle" element={<ProtectedRoute><AddListing /></ProtectedRoute>} />
           <Route path="login" element={<Base> <Login /></Base>} />

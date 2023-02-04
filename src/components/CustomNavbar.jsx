@@ -23,7 +23,7 @@ export default function CustomNavbar() {
   return (
     <div className="my-nav">
       <Navbar expand="md" fixed="" className="px-3 shadow-sm">
-        <NavbarBrand tag={ReactLink} to="/home">Rental Website</NavbarBrand>
+        <NavbarBrand tag={ReactLink} to="/home" className="logo">CAR.RENT </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav
@@ -35,16 +35,16 @@ export default function CustomNavbar() {
           ></Nav>
           <Nav>
             <NavItem>
-              <NavLink tag={ReactLink} to="/home">Home</NavLink>
+              <NavLink tag={ReactLink} to="/home" className="nav-items">Home </NavLink> 
             </NavItem>
             <NavItem>
-              <NavLink tag={ReactLink} to="/about">About</NavLink>
+              <NavLink tag={ReactLink} to="/about" className="nav-items">About</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={ReactLink} to="/dashboard">Dashboard</NavLink>
+              <NavLink tag={ReactLink} to="/dashboard"className="nav-items" >Dashboard</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={ReactLink} to="/list-vehicle">List Vehicle</NavLink>
+              <NavLink tag={ReactLink} to="/list-vehicle" className="nav-items">List Vehicle</NavLink>
             </NavItem>
             {user &&
               <NavItem>
@@ -61,7 +61,7 @@ export default function CustomNavbar() {
               </NavItem>
             }
             {!user && <NavItem>
-              <NavLink tag={ReactLink} to="/login">
+              <NavLink tag={ReactLink} to="/login" className="nav-logins">
                 <Button
                   style={{
                     background: "#5D5A88",
@@ -72,7 +72,7 @@ export default function CustomNavbar() {
               </NavLink>
             </NavItem>}
             {!user && <NavItem>
-              <NavLink tag={ReactLink} to="/signUp">
+              <NavLink tag={ReactLink} to="/signUp" className="nav-logins">
                 <Button
                   style={{
                     background: "#5D5A88",

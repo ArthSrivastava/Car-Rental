@@ -56,8 +56,42 @@ body{
   }
   .mx-2:hover {
     background-color: #686ae9!important;
+    cursor: pointer;
+    transform: scale(1.1);
+    
   }
   
   .my-nav{
      background-color: rgb(174, 159, 241)!important;
+     box-shadow: 7px 7px;
+     border-radius: 5px;
   }
+  
+  .nav-items{
+    font-size: 21px!important;
+  }
+  .nav-items:hover{
+    background-color: white!important;
+    cursor: pointer;
+    transform: scale(1.05);
+    filter: brightness(150%);
+  }
+  
+  .nav-logins button {
+    transition: all 0.3s ease;
+    transform: scale(1);
+  }
+   
+  .nav-logins button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    filter: brightness(120%);
+  }
+
+  .logo{
+    font-family: cursive;
+    font-weight: 600!important;
+    font-size: 30px!important;
+    text-shadow: 1px 2px;
+  }
+

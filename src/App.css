@@ -2,7 +2,10 @@
     font-family: 'Poppins';
     font-weight: 600;
     color: #5D5A88;
-    background-color: #e2e2e2;
+}
+
+body{
+    background-color: #e2e2e2!important;
 }
 
 .home--content{

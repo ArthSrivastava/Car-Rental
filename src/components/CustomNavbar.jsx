@@ -21,8 +21,8 @@ export default function CustomNavbar() {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <div className="my-nav">
-      <Navbar expand="md" fixed="" className="px-3">
-        <NavbarBrand>Rental Website</NavbarBrand>
+      <Navbar expand="md" fixed="" className="px-3 shadow-sm">
+        <NavbarBrand tag={ReactLink} to="/home">Rental Website</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav
@@ -34,14 +34,15 @@ export default function CustomNavbar() {
           ></Nav>
           <Nav>
             <NavItem>
-              <NavLink>Home</NavLink>
+              <NavLink tag={ReactLink} to="/home">Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>About</NavLink>
+              <NavLink tag={ReactLink} to="/about">About</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>Dashboard</NavLink>
+              <NavLink tag={ReactLink} to="/dashboard">Dashboard</NavLink>
             </NavItem>
+            <NavLink tag={ReactLink} to="/list-vehicle  ">List Vehicle</NavLink>
             <NavItem>
               <NavLink>
                 <Button
@@ -53,6 +54,7 @@ export default function CustomNavbar() {
                 </Button>
               </NavLink>
             </NavItem>
+            <NavItem></NavItem>
             <NavItem>
               <NavLink>
                 <Button

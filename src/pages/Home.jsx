@@ -24,8 +24,9 @@ export default function Home() {
                 <Col>
                 </Col>
             </Row>
+
             </Container>
         </Base>
-        
+
     )
 }

@@ -56,7 +56,7 @@ export default function Listing({
             }}
           >
             <img
-              src="src/assets/courage.jpg"
+              src={listing.image}
               alt="vehicle-image"
               style={{
                 maxWidth: "200px",

@@ -11,10 +11,10 @@ export default function Home() {
                         offset: 1
                     }} className="home--content">
                     <h1>
-                    Find car of your choice, sharing is our motto
+                    You pick up the car and we will take care of rest.
                     </h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit nullam neque ultrices.</p>
-                    <Button color="primary"> 
+                    <Button color="primary" className="mx-2"> 
                         Get Started
                     </Button>
                     <Button color="primary" className="mx-2"> 

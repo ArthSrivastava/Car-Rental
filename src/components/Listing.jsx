@@ -43,7 +43,7 @@ export default function Listing({listing}) {
               ></Col>
               <Col>
                 {/* fix the url */}
-                <Link to={"/listing/" + 1}>Read More...</Link>
+                <Link to={"/listing/" + listing.id} docid={listing.id}>Read More...</Link>
               </Col>
             </Row>
           </Col>

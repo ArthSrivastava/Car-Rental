@@ -3,11 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert, CardBody, Form, FormGroup, Container, Card, Row, Col, Label, Input, Button } from "reactstrap";
 import Base from "../components/Base";
-import {db} from "../firebase";
-
-
-
-
+import {db,auth} from "../firebase";
 export default function AddListing() {
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
@@ -16,6 +12,8 @@ export default function AddListing() {
   const [fuelType, setFuelType] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const user = auth.currentUser;
+
   //create listing on firebase
   const createListing = async (e) => {
     e.preventDefault(e);
@@ -31,6 +29,8 @@ export default function AddListing() {
       manufacturer:manufacturer,
       description:description,
       fuelType: fuelType,
+      ownerUserId: user.uid,
+      listed:false
     });
 
     navigate('/dashboard');

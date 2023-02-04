@@ -24,14 +24,14 @@ export default function Dashboard() {
             return () => unsubscribe();
         }, []
     );
-    
+
     return (
         <Base>
             <Container >
                 <h1 className="ms-3 mt-3">Recent Listings</h1>
                 {/* map over listings and pass the items to Listing.jsx component as props */
-                    listings.map((listing) => (
-                        <Listing listing={listing} />
+                    listings.map((listing,index) => (
+                        <Listing listing={listing} key={index} />
                     ))
                 }
             </Container>

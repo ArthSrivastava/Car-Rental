@@ -1,7 +1,7 @@
 *{
     font-family: 'Poppins';
     font-weight: 600;
-    color: #5D5A88;
+    color: #6d6a91;
 }
 
 body{
@@ -25,7 +25,7 @@ body{
 }
 
 .navbar-brand{ 
-    color: #69e305!important;
+    color: #306b53!important;
     font-weight: 700!important;
     font-size: 22px!important;
 }
@@ -33,3 +33,30 @@ body{
     font-size: 18px!important;
     color: black!important;
 }
+
+.mx-2 {
+    display: inline-block!important;
+    background-color: #0e0e55!important;
+    border-radius: 15px!important;
+    border: 4px double #cccccc!important;
+    color: #ffffff!important;
+    text-align: center!important;
+    font-size: 15px!important;
+    padding: 10px!important;
+    width:  150px!important;
+    transition: all 0.5s!important;
+    cursor: pointer!important;
+    margin: 5px!important;
+  }
+  button span {
+    cursor: pointer!important;
+    display: inline-block!important;
+    position: relative!important;
+    transition: 0.5s!important;
+  }
+  .mx-2:hover {
+    background-color: #686ae9!important;
+  }
+  
+  
+ 

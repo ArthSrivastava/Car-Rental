@@ -10,6 +10,7 @@ import Login from "./pages/authentication/Login";
 import SignUp from "./pages/authentication/SignUp";
 import ProtectedRoute from "./pages/authentication/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
+import ComparisonPage from "./pages/ComparisonPage";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route path="list-vehicle" element={<ProtectedRoute><AddListing /></ProtectedRoute>} />
           <Route path="login" element={<Base> <Login /></Base>} />
           <Route path="signUp" element={<Base><SignUp /></Base>} />
+          <Route path="comparison" element={<ComparisonPage />} />
+          
         </Routes>
       </UserAuthContextProvider>
     </BrowserRouter>

@@ -1,13 +1,51 @@
-import { Card, Row, Col, CardBody } from "reactstrap";
+import { Card, Row, Col, CardBody, Button } from "reactstrap";
 import { Link } from "react-router-dom";
-export default function Listing({listing}) {
+import { useEffect, useState } from "react";
+import { NavLink as ReactLink } from "react-router-dom";
+import ComparisonPage from "../pages/ComparisonPage";
+export default function Listing({
+  listing,
+  setCountSelected,
+  canSelectMore,
+  countSelected,
+  selectedListings,
+  setSelectedListings,
+  handleCompare
+}) {
+  const [selected, setSelected] = useState(false);
+  const [addClass, setAddClass] = useState("shadow-sm mt-3 rounded-0");
+  const markSelected = () => {
+    if (
+      addClass.includes("selected") ||
+      (!addClass.includes("selected") && canSelectMore)
+    ) {
+      setSelected(!selected);
+    } else {
+      return;
+    }
+  };
+
+  useEffect(() => {
+    selected
+      ? setAddClass("shadow-sm mt-3 rounded-0 selected")
+      : setAddClass("shadow-sm mt-3 rounded-0");
+    selected
+      ? setCountSelected(countSelected + 1)
+      : setCountSelected(countSelected - 1);
+
+      selected ? setSelectedListings([...selectedListings, listing.id]) : (
+        setSelectedListings(selectedListings.filter((item) => item != listing.id))
+      ) 
+  }, [selected]);
+
   return (
     <Card
-      className="shadow-sm mt-3 rounded-0"
+      className={addClass}
       style={{
         width: "60vw",
         marginLeft: "15vw",
       }}
+      onClick={markSelected}
     >
       <CardBody>
         <Row>
@@ -29,7 +67,11 @@ export default function Listing({listing}) {
           <Col>
             <h2>{listing.make}</h2>
             <h2>{`${listing.model}  ${listing.year}`}</h2>
-            <p>
+            <p
+              style={{
+                height: "17vh",
+              }}
+            >
               {listing.description}
             </p>
             <Row>
@@ -38,12 +80,21 @@ export default function Listing({listing}) {
               </Col>
               <Col
                 md={{
-                  size: 5,
+                  size: 4,
                 }}
               ></Col>
               <Col>
                 {/* fix the url */}
-                <Link to={"/listing/" + listing.id} docid={listing.id}>Read More...</Link>
+                <Link to={"/listing/" + listing.id} docid={listing.id}>
+                  Read More...
+                </Link>
+              </Col>
+              <Col>
+                {countSelected == 2 && addClass.includes("selected") ? (
+                  <Link to="/comparison" state={{ compareListings: selectedListings }} className="btn btn-primary">Compare</Link>
+                ) : (
+                  ""
+                )}
               </Col>
             </Row>
           </Col>

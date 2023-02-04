@@ -30,7 +30,8 @@ export default function AddListing() {
       description:description,
       fuelType: fuelType,
       ownerUserId: user.uid,
-      listed:false
+      rented:false,
+      rentedBy:null
     });
 
     navigate('/dashboard');

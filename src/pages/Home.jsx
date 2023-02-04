@@ -21,7 +21,7 @@ export default function Home() {
                         View Dashboard
                     </Button>
                 </Col>
-                <Col>
+                <Col className="home--content home--logo">
                 </Col>
             </Row>
 

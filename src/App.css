@@ -63,15 +63,17 @@ body{
   
   .my-nav{
      background-color: rgb(174, 159, 241)!important;
-     box-shadow: 7px 7px;
+     box-shadow: 4px 4px;
      border-radius: 5px;
   }
   
   .nav-items{
     font-size: 21px!important;
+    font-weight: 600px!important;
+    border-radius: 10px;
   }
   .nav-items:hover{
-    background-color: white!important;
+    background-color: rgb(73, 108, 207)!important;
     cursor: pointer;
     transform: scale(1.05);
     filter: brightness(150%);
@@ -89,9 +91,8 @@ body{
   }
 
   .logo{
-    font-family: cursive;
     font-weight: 600!important;
-    font-size: 30px!important;
-    text-shadow: 1px 2px;
+    font-size: 35px!important;
+    text-shadow: 1px 1px;
   }
 

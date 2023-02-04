@@ -15,9 +15,10 @@ import {
 } from "reactstrap";
 import { useState } from "react";
 import { NavLink as ReactLink } from "react-router-dom";
+import { useUserAuth } from "../context/UserAuthContext";
 export default function CustomNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  let { user, logOut } = useUserAuth();
   const toggle = () => setIsOpen(!isOpen);
   return (
     <div className="my-nav">
@@ -42,9 +43,25 @@ export default function CustomNavbar() {
             <NavItem>
               <NavLink tag={ReactLink} to="/dashboard">Dashboard</NavLink>
             </NavItem>
-            <NavLink tag={ReactLink} to="/list-vehicle  ">List Vehicle</NavLink>
             <NavItem>
-              <NavLink>
+              <NavLink tag={ReactLink} to="/list-vehicle">List Vehicle</NavLink>
+            </NavItem>
+            {user &&
+              <NavItem>
+                <NavLink>
+                  <Button
+                    style={{
+                      background: "#5D5A88",
+                    }} onClick={logOut}
+                  >
+                    Logout
+                  </Button>
+
+                </NavLink>
+              </NavItem>
+            }
+            {!user && <NavItem>
+              <NavLink tag={ReactLink} to="/login">
                 <Button
                   style={{
                     background: "#5D5A88",
@@ -53,10 +70,9 @@ export default function CustomNavbar() {
                   Login
                 </Button>
               </NavLink>
-            </NavItem>
-            <NavItem></NavItem>
-            <NavItem>
-              <NavLink>
+            </NavItem>}
+            {!user && <NavItem>
+              <NavLink tag={ReactLink} to="/signUp">
                 <Button
                   style={{
                     background: "#5D5A88",
@@ -65,7 +81,8 @@ export default function CustomNavbar() {
                   Signup
                 </Button>
               </NavLink>
-            </NavItem>
+            </NavItem>}
+
           </Nav>
         </Collapse>
       </Navbar>

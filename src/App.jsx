@@ -1,6 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
+import Base from "./components/Base";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import ReadListing from "./pages/ReadListing";
@@ -20,8 +21,8 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="listing/:listingId" element={<ReadListing />} />
           <Route path="list-vehicle" element={<ProtectedRoute><AddListing /></ProtectedRoute>} />
-          <Route path="login" element={<Login />} />
-          <Route path="signUp" element={<SignUp />} />
+          <Route path="login" element={<Base> <Login /></Base>} />
+          <Route path="signUp" element={<Base><SignUp /></Base>} />
         </Routes>
       </UserAuthContextProvider>
     </BrowserRouter>

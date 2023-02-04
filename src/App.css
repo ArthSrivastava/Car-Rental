@@ -25,7 +25,7 @@ body{
 }
 
 .navbar-brand{ 
-    color: #306b53!important;
+    color: #028117!important;
     font-weight: 700!important;
     font-size: 22px!important;
 }
@@ -58,5 +58,6 @@ body{
     background-color: #686ae9!important;
   }
   
-  
- 
+  .my-nav{
+     background-color: rgb(174, 159, 241)!important;
+  }

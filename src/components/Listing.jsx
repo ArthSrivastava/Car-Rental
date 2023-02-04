@@ -1,6 +1,6 @@
 import { Card, Row, Col, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
-export default function Listing(props) {
+export default function Listing({listing}) {
   return (
     <Card
       className="shadow-sm mt-3 rounded-0"
@@ -27,13 +27,10 @@ export default function Listing(props) {
             />
           </Col>
           <Col>
-            <h2>Toyota</h2>
-            <h2>Camri 1993</h2>
+            <h2>{listing.make}</h2>
+            <h2>{`${listing.model}  ${listing.year}`}</h2>
             <p>
-              Our team was inspired by the seven skills of highly effective
-              programmers created by the TechLead. We wanted to provide our own
-              take on the topic. Here are our seven skills of effective
-              programmers...
+              {listing.description}
             </p>
             <Row>
               <Col>
@@ -46,7 +43,7 @@ export default function Listing(props) {
               ></Col>
               <Col>
                 {/* fix the url */}
-                <Link to={"/listing/" + 1}>Read More...</Link>
+                <Link to={"/listing/" + listing.id} docid={listing.id}>Read More...</Link>
               </Col>
             </Row>
           </Col>

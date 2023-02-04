@@ -105,5 +105,6 @@ body{
   }
   
   .selected{
-    border: 2px solid black !important
+      border: 1px #686ae9!important;
+    border-style:  groove!important; 
   }

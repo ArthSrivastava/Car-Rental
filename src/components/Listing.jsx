@@ -13,7 +13,7 @@ export default function Listing({
   handleCompare
 }) {
   const [selected, setSelected] = useState(false);
-  const [addClass, setAddClass] = useState("shadow-sm mt-3 rounded-0");
+  const [addClass, setAddClass] = useState("mt-3 rounded-0");
   const markSelected = () => {
     if (
       addClass.includes("selected") ||
@@ -27,8 +27,8 @@ export default function Listing({
 
   useEffect(() => {
     selected
-      ? setAddClass("shadow-sm mt-3 rounded-0 selected")
-      : setAddClass("shadow-sm mt-3 rounded-0");
+      ? setAddClass("shadow-lg mt-3 rounded-0 selected")
+      : setAddClass("shadow-none mt-3 rounded-0");
     selected
       ? setCountSelected(countSelected + 1)
       : setCountSelected(countSelected - 1);
@@ -72,7 +72,7 @@ export default function Listing({
                 height: "17vh",
               }}
             >
-              {listing.description}
+              {listing.description.substring(0, 300) + "..."}
             </p>
             <Row>
               <Col>

@@ -1,5 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert, CardBody, Form, FormGroup, Container, Card, Row, Col, Label, Input, Button } from "reactstrap";
 import Base from "../components/Base";
@@ -19,6 +19,8 @@ export default function AddListing() {
   const navigate = useNavigate();
   const user = auth.currentUser;
 
+  const [isLoading, setIsLoading] = useState(false)
+
   //create listing on firebase
   const createListing = async (e) => {
     e.preventDefault(e);
@@ -36,6 +38,7 @@ export default function AddListing() {
         'Access-Control-Allow-Origin': '*'
       },
     };
+    setIsLoading(true)
     try {
       let response = await axios.request(options);
       console.log(response.data.description);
@@ -55,6 +58,7 @@ export default function AddListing() {
         price:price,
         comments: []
       });
+      setIsLoading(false)
     } catch (e) {
       console.log(e);
     }
@@ -62,6 +66,7 @@ export default function AddListing() {
     navigate('/dashboard');
   }
 
+ 
   return (
     <Base>
       <Container className="mt-3">
@@ -110,8 +115,8 @@ export default function AddListing() {
                     <Label for="vehicle_type"><h4>Vehicle Type</h4></Label>
                     <Input type="select" id="vehicle_type" name="vehicle_type" defaultValue="temp" onChange={(e) => setVehicleType(e.target.value)}>
                       <option disabled value="temp">--Select type--</option>
-                      <option value="Two wheeler">Two wheeler</option>
-                      <option value="Four wheeler">Four wheeler</option>
+                      <option value="Two wheeler">Two wheel drive</option>
+                      <option value="Four wheeler">Four wheel drive</option>
                     </Input>
                   </FormGroup>
                   <FormGroup>
@@ -127,7 +132,6 @@ export default function AddListing() {
                     <Button color="primary">Submit</Button>
                     <Button type="reset" color="warning" className="ms-2">Reset</Button>
                   </Container>
-
                 </Form>
               </CardBody>
             </Card>

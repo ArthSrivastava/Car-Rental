@@ -27,7 +27,7 @@ export default function About() {
                   </Col>
                   <Col>
                     <h4>Arth Srivastava</h4>
-                    <h4>Worked On: React</h4>
+                    <h4>Worked On: CSS + React</h4>
                   </Col>
                 </Row>
               </li>

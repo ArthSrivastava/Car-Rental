@@ -1,5 +1,6 @@
 import Base from "../components/Base";
 import { Row, Col, Container, Button } from "reactstrap";
+import { NavLink as ReactLink } from "react-router-dom";
 export default function Home() {
     return (
         <Base>
@@ -17,8 +18,8 @@ export default function Home() {
                     <Button color="primary" className="mx-2"> 
                         Get Started
                     </Button>
-                    <Button color="primary" className="mx-2"> 
-                        View Dashboard
+                    <Button color="primary" className="mx-2" tag={ReactLink} to="/dashboard"> 
+                        View Dashboard 
                     </Button>
                 </Col>
                 <Col className="home--content home--logo">

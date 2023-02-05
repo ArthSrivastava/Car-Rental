@@ -75,56 +75,61 @@ export default function ComparisonPage() {
     <Base>
       <Container className="text-center mt-3">
         <Row>
-        {loading &&
-          <div class="main">
-            <div class="loading-element">
-              <img src="../../assets/loading.svg" alt="" />
+          {loading &&
+            <div class="main">
+              <div class="loading-element">
+                <img src="../../assets/loading.svg" alt="" />
+              </div>
             </div>
-          </div>
-        }
-          
+          }
+
           {
-          !loading &&
-          <><Col
-            md={{
-              size: 6,
-            }}
-          >
-            {console.log(carData)}
-            <Card className="rounded-0">
-              <CardHeader><h1>{carData[0] && carData[0].model}</h1></CardHeader>
-              <CardBody>
-                {carData[0] && <img src={carData[0].image} alt="" srcset="" style={{
-                  maxHeight: "60vh",
-                  width: "100%"
-                }} />}
-                <p>
-                  {carData[0] && carData[0].description}
-                </p>
-              </CardBody>
-            </Card>
-          </Col><Col>
+            !loading &&
+            <><Col
+              md={{
+                size: 6,
+              }}
+            >
+              {console.log(carData)}
               <Card className="rounded-0">
-                <CardHeader><h1>{carData[1] && carData[1].model}</h1></CardHeader>
+                <CardHeader><h1>{carData[0] && carData[0].model}</h1></CardHeader>
                 <CardBody>
-                  {carData[1] && <img src={carData[1].image} alt="" srcset="" style={{
+                  {carData[0] && <img src={carData[0].image} alt="" srcset="" style={{
                     maxHeight: "60vh",
                     width: "100%"
                   }} />}
                   <p>
-                    {carData[1] && carData[1].description}
+                    {carData[0] && carData[0].description}
                   </p>
                 </CardBody>
               </Card>
-            </Col></>
-        }
+            </Col><Col>
+                <Card className="rounded-0">
+                  <CardHeader><h1>{carData[1] && carData[1].model}</h1></CardHeader>
+                  <CardBody>
+                    {carData[1] && <img src={carData[1].image} alt="" srcset="" style={{
+                      maxHeight: "60vh",
+                      width: "100%"
+                    }} />}
+                    <p>
+                      {carData[1] && carData[1].description}
+                    </p>
+                  </CardBody>
+                </Card>
+              </Col></>
+          }
         </Row>
         <hr />
         <Row className="mt-3">
           <Col>
             <Card className="rounded-0">
               <CardHeader><h1>Comparison</h1></CardHeader>
-              <CardBody><p>{carComparisonData && carComparisonData.description}</p></CardBody>
+              {loadComparison && <div class="main">
+                <div class="loading-element">
+                  <img src="../../assets/loading.svg" alt="" />
+                </div>
+              </div>}
+              {!loadComparison && <CardBody><p>{carComparisonData && carComparisonData.description}</p></CardBody>}
             </Card>
           </Col>
         </Row>
@@ -136,25 +141,35 @@ export default function ComparisonPage() {
           >
             <Card className="rounded-0">
               <CardHeader>Car 1 Pollution Analysis by cohere</CardHeader>
-              <CardBody>
+              {!loadPoll && <CardBody>
                 <p>
                   {
                     carP1.description
                   }
                 </p>
-              </CardBody>
+              </CardBody>}
+              {loadPoll && <div class="main">
+                <div class="loading-element">
+                  <img src="../../assets/loading.svg" alt="" />
+                </div>
+              </div>}
             </Card>
           </Col>
           <Col>
             <Card className="rounded-0">
               <CardHeader>Car 2 Reviews Analysis by cohere</CardHeader>
-              <CardBody>
+              {!loadPoll && <CardBody>
                 <p>
                   {
                     carP2.description
                   }
                 </p>
-              </CardBody>
+              </CardBody>}
+              {loadPoll && <div class="main">
+                <div class="loading-element">
+                  <img src="../../assets/loading.svg" alt="" />
+                </div>
+              </div>}
             </Card>
           </Col>
         </Row>}

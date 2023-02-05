@@ -15,15 +15,15 @@ export default function Home() {
                     You pick up the car and we will take care of rest.
                     </h1>
                     <p>Looking for a great deal on a new or used car near you? At Car.Rent we have a wide range of new and used cars for sale at great prices.</p>
-                    <Button color="primary" className="mx-2"> 
+                    <Button color="primary" className="mx-2" tag={ReactLink} to="/signUp"> 
                         Get Started
                     </Button>
                     <Button color="primary" className="mx-2" tag={ReactLink} to="/dashboard"> 
                         View Dashboard 
                     </Button>
                 </Col>
-                <Col className="home--content home--logo">
-                
+                <Col className="mt-5">
+                    <img src="src/assets/CarRent.jpg" alt="" srcset="" />
                 </Col>
             </Row>
 

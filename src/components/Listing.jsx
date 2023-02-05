@@ -76,7 +76,7 @@ export default function Listing({
                 height: "17vh",
               }}
             >
-              {listing.description.substring(0, 300) + "..."}
+              {listing.description.substring(0, 280) + "..."}
             </p>
             <Row>
               <Col md={

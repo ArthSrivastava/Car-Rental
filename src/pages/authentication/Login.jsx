@@ -9,34 +9,46 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const { logIn, googleSignIn } = useUserAuth();
+    const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
+        setLoading(true);
         try {
             await logIn(email, password);
             navigate("/home");
         } catch (err) {
             setError(err.message);
         }
+        setLoading(false);
     };
 
     const handleGoogleSignIn = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             await googleSignIn();
             navigate("/home");
         } catch (error) {
             console.log(error.message);
         }
+        setLoading(false);
     };
 
     return (
         <>
             <Container className='mt-3'>
                 <Row>
-                    <Col className="mt-4"
+                    {isLoading && (
+                        <Container className="text-center">
+                            <div class="loading-element">
+                                <img src="../assets/loading.svg" alt="" />
+                            </div>
+                        </Container>
+                    )}
+                    {!isLoading && <Col className="mt-4"
                         md={{
                             size: 6,
                         }}>
@@ -76,7 +88,7 @@ export default function Login() {
                         <div className="p-4 box mt-3 text-center">
                             Don't have an account? <Link to="/signup">Sign up</Link>
                         </div>
-                    </Col>
+                    </Col>}
                 </Row>
             </Container>
         </>

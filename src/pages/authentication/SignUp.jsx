@@ -9,31 +9,37 @@ export default function SignUp() {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [err, setError] = useState("");
-    const {signUp} = useUserAuth();
+    const [isLoading, setLoading] = useState(false);
+    const { signUp } = useUserAuth();
     const navigate = useNavigate();
-    const handleSubmit = async (e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
-        try{
-            await signUp(email,pass);
+        try {
+            await signUp(email, pass);
             navigate("/login")
-        }catch(err){ 
+        } catch (err) {
             setError(err.message);
         }
     };
     return (
-        <>
-            <div className='p-4 box mt-3 text-center'>
+        <div>
+            {isLoading && (
+                <Container className="text-center">
+                    <div class="loading-element">
+                        <img src="../assets/loading.svg" alt="" />
+                    </div>
+                </Container>
+            )}
+            {!isLoading && <><div className='p-4 box mt-3 text-center'>
                 <h2 className='mb-3'>User Sign Up</h2>
                 {err && <Alert variant="danger">{err}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className='mb-3' controlId='formBasicEmail'>
-                        <Form.Control type='email' placeholder='Email address' onChange={
-                            (e) => setEmail(e.target.value)} />
+                        <Form.Control type='email' placeholder='Email address' onChange={(e) => setEmail(e.target.value)} />
                     </Form.Group>
                     <Form.Group className='mb-3' controlId='formBasicPassword'>
-                        <Form.Control type='password' placeholder='Password' onChange={
-                            (e) => setPass(e.target.value)} />
+                        <Form.Control type='password' placeholder='Password' onChange={(e) => setPass(e.target.value)} />
                     </Form.Group>
                     <div className='d-grid gap-2'>
                         <Button variant="primary" type="Submit">
@@ -41,10 +47,9 @@ export default function SignUp() {
                         </Button>
                     </div>
                 </Form>
-            </div>
-            <div className='p-4 box mt-3 text-center'>
-                Already have an account? <Link to="/login">Log In</Link>
-            </div>
-        </>
+            </div><div className='p-4 box mt-3 text-center'>
+                    Already have an account?<Link to="/login">Log In</Link>
+                </div></>}
+        </div>
     );
 }

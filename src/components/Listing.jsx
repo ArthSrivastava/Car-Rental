@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { NavLink as ReactLink } from "react-router-dom";
 import ComparisonPage from "../pages/ComparisonPage";
+import { auth } from "../firebase";
 export default function Listing({
   listing,
   setCountSelected,
@@ -14,6 +15,9 @@ export default function Listing({
 }) {
   const [selected, setSelected] = useState(false);
   const [addClass, setAddClass] = useState("mt-3 rounded-0");
+
+  const user = auth.currentUser
+  
   const markSelected = () => {
     if (
       addClass.includes("selected") ||
@@ -75,8 +79,12 @@ export default function Listing({
               {listing.description.substring(0, 300) + "..."}
             </p>
             <Row>
-              <Col>
-                <Link to="/dashboard">Glen Williams</Link>
+              <Col md={
+                {
+                  size: 3
+                }
+              }>
+                <Link to="/dashboard">{user.displayName}</Link>
               </Col>
               <Col
                 md={{

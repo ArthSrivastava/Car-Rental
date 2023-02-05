@@ -1,3 +1,8 @@
+deployment: https://rainbow-fairy-59d6d4.netlify.app/
+backend: https://dorian-opposite-utahraptor.glitch.me/
+backend-repo: https://github.com/squidrye/Car-Rental-Middleware
+frontend-repo: https://github.com/ArthSrivastava/Car-Rental
+
 # Car-Rental Project for MLH Hack-ccelerate Hackathon
 ## Inspiration
 Our inspiration for this project was to encourage sustainable collaboration of vehicles, in our mind sharing and pooling of already existing vehicles can satisfy a large number of automobile consumer market as well as approach will help in reducing the strain on environment and natural resources due to ever increasing number of vehicles on road.

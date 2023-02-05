@@ -140,7 +140,7 @@ export default function ComparisonPage() {
             }}
           >
             <Card className="rounded-0">
-              <CardHeader>Car 1 Pollution Analysis by cohere</CardHeader>
+              <CardHeader>Car 1 Pollution Description by AI</CardHeader>
               {!loadPoll && <CardBody>
                 <p>
                   {
@@ -157,7 +157,7 @@ export default function ComparisonPage() {
           </Col>
           <Col>
             <Card className="rounded-0">
-              <CardHeader>Car 2 Reviews Analysis by cohere</CardHeader>
+              <CardHeader>Car 2 Pollution Description by AI</CardHeader>
               {!loadPoll && <CardBody>
                 <p>
                   {

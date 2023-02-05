@@ -14,6 +14,7 @@ export default function AddListing() {
   const [transmission, setTransmission] = useState("")
   const [vehicleType, setVehicleType] = useState("")
   const [description, setDescription] = useState("")
+  const [price, setPrice] = useState(0);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const user = auth.currentUser;
@@ -51,6 +52,7 @@ export default function AddListing() {
         vehicleType: vehicleType,
         rented: false,
         rentedBy: null,
+        price:price,
         comments: []
       });
     } catch (e) {
@@ -89,6 +91,10 @@ export default function AddListing() {
                     <Input type="text" id="year" name="year" onChange={(e) => setYear(e.target.value)} />
                   </FormGroup>
                   <FormGroup>
+                    <Label for="price"><h4>Listing Price/ day</h4></Label>
+                    <Input type="number" id="price" name="price" onChange={(e) => setPrice(e.target.value)} />
+                  </FormGroup>
+                  <FormGroup>
                     <Label for="image"><h4>Image</h4></Label>
                     <Input type="text" id="image" name="image" onChange={(e) => setImage(e.target.value)} />
                   </FormGroup>
@@ -105,7 +111,7 @@ export default function AddListing() {
                     <Input type="select" id="vehicle_type" name="vehicle_type" defaultValue="temp" onChange={(e) => setVehicleType(e.target.value)}>
                       <option disabled value="temp">--Select type--</option>
                       <option value="Two wheeler">Two wheeler</option>
-                      <option value="Manual">Four wheeler</option>
+                      <option value="Four wheeler">Four wheeler</option>
                     </Input>
                   </FormGroup>
                   <FormGroup>

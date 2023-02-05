@@ -1,5 +1,6 @@
 import Base from "../components/Base";
 import { Row, Col, Container, Button } from "reactstrap";
+import { NavLink as ReactLink } from "react-router-dom";
 export default function Home() {
     return (
         <Base>
@@ -14,11 +15,11 @@ export default function Home() {
                     You pick up the car and we will take care of rest.
                     </h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit nullam neque ultrices.</p>
-                    <Button color="primary" className="mx-2"> 
+                    <Button color="primary" className="mx-2" tag={ReactLink} to="/signUp"> 
                         Get Started
                     </Button>
-                    <Button color="primary" className="mx-2"> 
-                        View Dashboard
+                    <Button color="primary" className="mx-2" tag={ReactLink} to="/dashboard"> 
+                        View Dashboard 
                     </Button>
                 </Col>
                 <Col className="home--content home--logo">

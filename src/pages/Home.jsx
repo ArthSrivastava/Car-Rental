@@ -23,7 +23,7 @@ export default function Home() {
                     </Button>
                 </Col>
                 <Col className="mt-5">
-                    <img src="src/assets/CarRent.jpg" alt="" srcset="" />
+                    <img src="src/assets/CarRent.jpg" />
                 </Col>
             </Row>
 

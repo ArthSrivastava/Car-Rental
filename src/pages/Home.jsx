@@ -14,8 +14,8 @@ export default function Home() {
                     <h1>
                     You pick up the car and we will take care of rest.
                     </h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit nullam neque ultrices.</p>
-                    <Button color="primary" className="mx-2" tag={ReactLink} to="/signUp"> 
+                    <p>Looking for a great deal on a new or used car near you? At Car.Rent we have a wide range of new and used cars for sale at great prices.</p>
+                    <Button color="primary" className="mx-2"> 
                         Get Started
                     </Button>
                     <Button color="primary" className="mx-2" tag={ReactLink} to="/dashboard"> 
@@ -23,6 +23,7 @@ export default function Home() {
                     </Button>
                 </Col>
                 <Col className="home--content home--logo">
+                
                 </Col>
             </Row>
 

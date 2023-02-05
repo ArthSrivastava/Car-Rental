@@ -1,7 +1,7 @@
 [deployment](https://rainbow-fairy-59d6d4.netlify.app/)
-[backend]: (https://dorian-opposite-utahraptor.glitch.me/)
-[backend-repo]: (https://github.com/squidrye/Car-Rental-Middleware)
-[frontend-repo]: (https://github.com/ArthSrivastava/Car-Rental)
+[backend](https://dorian-opposite-utahraptor.glitch.me/)
+[backend-repo](https://github.com/squidrye/Car-Rental-Middleware)
+[frontend-repo](https://github.com/ArthSrivastava/Car-Rental)
 
 # Car-Rental Project for MLH Hack-ccelerate Hackathon
 ## Inspiration

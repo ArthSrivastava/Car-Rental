@@ -75,6 +75,7 @@ export default function AddListing() {
         rentedBy: null,
         price: price,
         comments: [],
+        ownerName: user.displayName
       });
       setIsLoading(false);
     } catch (e) {

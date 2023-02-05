@@ -37,6 +37,18 @@ export default function ReadListing(props) {
       alert(`error occured ${e}`)
     }
   }
+  const returnCar = async ()=>{
+    try{
+      await updateDoc(doc(db,"cars",listingId),{
+        rented:false,
+        rentedBy: null,
+      })
+      alert(`Retned successfully`)
+      navigate('/dashboard')
+    }catch(e){
+      alert(`error occured ${e}`)
+    }
+  }
   useEffect(() => {
     fetchData();
   }, []);
@@ -47,12 +59,15 @@ export default function ReadListing(props) {
         <Container className="mt-3">
           <Card className="rounded-0 shadow-sm">
             <section>
-              <Container>
+              <Container style={
+                {padding: "5vh"}
+              }>
                 <Row>
                   <Col lg="6">
                     <img src={carData.image} alt="" className="w-100" style={
                       {
-                        maxHeight: "80vh"
+                        maxHeight: "80vh",
+                        marginTop: "10vh"
                       }
                     } />
                   </Col>
@@ -90,7 +105,7 @@ export default function ReadListing(props) {
                           <i
                             class="ri-roadster-line"
                             style={{ color: "#f9a826" }}
-                          ></i>{" "}
+                          ></i>{"Car Model:  "}
                           {carData.model}
                         </span>
 
@@ -98,7 +113,7 @@ export default function ReadListing(props) {
                           <i
                             class="ri-settings-2-line"
                             style={{ color: "#f9a826" }}
-                          ></i>{" "}
+                          ></i>{"Transmission type: "}
                           {carData.transmission}
                         </span>
 
@@ -106,7 +121,7 @@ export default function ReadListing(props) {
                           <i
                             class="ri-timer-flash-line"
                             style={{ color: "#f9a826" }}
-                          ></i>{" "}
+                          ></i>{"Fuel Type: "}
                           {carData.fuelType}
                         </span>
                       </div>
@@ -117,22 +132,14 @@ export default function ReadListing(props) {
                       >
                         <span className=" d-flex align-items-center gap-1 section__description">
                           <i class="ri-map-pin-line" style={{ color: "#f9a826" }}></i>{" "}
-                          gps
-                        </span>
-
-                        <span className=" d-flex align-items-center gap-1 section__description">
-                          <i
-                            class="ri-wheelchair-line"
-                            style={{ color: "#f9a826" }}
-                          ></i>{" "}
-                          seatType
+                          Gps :Yes
                         </span>
 
                         <span className=" d-flex align-items-center gap-1 section__description">
                           <i
                             class="ri-building-2-line"
                             style={{ color: "#f9a826" }}
-                          ></i>{" "}
+                          ></i>{"Manufacturer: "}
                           {carData.manufacturer}
                         </span>
                       </div>
@@ -160,7 +167,7 @@ export default function ReadListing(props) {
                 Rent Car
               </Button>}
             {carData.rentedBy === user?.uid &&
-              <Button color="primary"> Return</Button>}
+              <Button onClick={returnCar} color="primary"> Return</Button>}
           </Card>
         </Container>
       </Base></>

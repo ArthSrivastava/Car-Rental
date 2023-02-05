@@ -5,14 +5,15 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { async } from "@firebase/util";
 import { db } from "../firebase";
-import { getCarComparison } from "../services/car-services";
+import { getCarComparison,getCarPollution } from "../services/car-services";
 export default function ComparisonPage() {
   const { state } = useLocation();
   const { compareListings } = state || {};
   const car1Id = compareListings[0];
   const car2Id = compareListings[1];
   const [carData, setCarData] = useState([])
-
+  const [carP1,setCarP1] = useState("");
+  const [carP2,setCarP2] = useState("");
   const [carComparisonData, setCarComparisonData] = useState("")
 
   const getCarData = async (carId) => {
@@ -37,6 +38,20 @@ export default function ComparisonPage() {
     getCarComparison(car1, car2, car1Model, car2Model).then(data => {
       console.log(data)
       setCarComparisonData(data)
+    }).catch(error => {
+      console.log(error)
+    })
+    getCarPollution(car1,car1Model).then(data =>{
+      console.log("car poll1 data")
+      console.log(data.data);
+      setCarP1(data.data);
+    }).catch(error => {
+      console.log(error)
+    })
+    getCarPollution(car2,car2Model).then(data =>{
+      console.log("car poll2 data")
+      console.log(data.data);
+      setCarP2(data.data);
     }).catch(error => {
       console.log(error)
     })
@@ -98,40 +113,36 @@ export default function ComparisonPage() {
                 </Card>
             </Col>
         </Row>
-        {/* <Row className="mt-3">
+        { <Row className="mt-3">
           <Col
             md={{
               size: 6,
             }}
           >
             <Card className="rounded-0">
-              <CardHeader>Car 1 Reviews Analysis</CardHeader>
+              <CardHeader>Car 1 Pollution Analysis by cohere</CardHeader>
               <CardBody>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Doloribus molestias cum perferendis suscipit commodi,
-                  voluptatum repellat rem sed dignissimos atque recusandae
-                  voluptas autem voluptatibus adipisci quos quo cumque aliquid?
-                  Quidem expedita nihil ipsum quae?
+                  {
+                    carP1.description
+                  }
                 </p>
               </CardBody>
             </Card>
           </Col>
           <Col>
             <Card className="rounded-0">
-              <CardHeader>Car 2 Reviews Analysis</CardHeader>
+              <CardHeader>Car 2 Reviews Analysis by cohere</CardHeader>
               <CardBody>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Doloribus molestias cum perferendis suscipit commodi,
-                  voluptatum repellat rem sed dignissimos atque recusandae
-                  voluptas autem voluptatibus adipisci quos quo cumque aliquid?
-                  Quidem expedita nihil ipsum quae?
+                  {
+                    carP2.description
+                  }
                 </p>
               </CardBody>
             </Card>
           </Col>
-        </Row> */}
+        </Row> }
       </Container>
     </Base>
   );

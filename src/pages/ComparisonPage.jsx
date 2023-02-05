@@ -2,25 +2,50 @@ import { useLocation } from "react-router-dom";
 import { Container, Row, Col, Card, CardBody, CardHeader } from "reactstrap";
 import Base from "../components/Base";
 import { doc, getDoc } from "firebase/firestore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { async } from "@firebase/util";
 import { db } from "../firebase";
+import { getCarComparison } from "../services/car-services";
 export default function ComparisonPage() {
   const { state } = useLocation();
   const { compareListings } = state || {};
   const car1Id = compareListings[0];
   const car2Id = compareListings[1];
-    console.log(car1Id, car2Id)
+  const [carData, setCarData] = useState([])
+
+  const [carComparisonData, setCarComparisonData] = useState("")
+
   const getCarData = async (carId) => {
     const docRef = doc(db, "cars", carId);
     const docSnap = await getDoc(docRef);
-    console.log(docSnap.data())
+    return docSnap.data()
   };
+  
+  const getData = async() => {
+    let info = []
+    let car1Data = await getCarData(car1Id);
+    info.push(car1Data)
+    let car2Data = await getCarData(car2Id);
+    info.push(car2Data)
+    console.log(info)
+    setCarData(info)
+    
+    let car1 = info[0].manufacturer
+    let car2 = info[1].manufacturer
+    let car1Model = info[0].model
+    let car2Model = info[1].model
+    getCarComparison(car1, car2, car1Model, car2Model).then(data => {
+      console.log(data)
+      setCarComparisonData(data)
+    }).catch(error => {
+      console.log(error)
+    })
+  }
 
   useEffect(() => {
-    getCarData(car1Id);
-    getCarData(car2Id);
+    getData()
   }, []);
+
 
   return (
     <Base>
@@ -31,39 +56,33 @@ export default function ComparisonPage() {
               size: 6,
             }}
           >
+            {console.log(carData)}
             <Card className="rounded-0">
-              <CardHeader>Car 1</CardHeader>
+              <CardHeader><h1>{carData[0] && carData[0].model}</h1></CardHeader>
               <CardBody>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Doloribus molestias cum perferendis suscipit commodi,
-                  voluptatum repellat rem sed dignissimos atque recusandae
-                  voluptas autem voluptatibus adipisci quos quo cumque aliquid?
-                  Quidem expedita nihil ipsum quae?
+                  {carData[0] && carData[0].description}
                 </p>
               </CardBody>
             </Card>
           </Col>
           <Col>
             <Card className="rounded-0">
-              <CardHeader>Car 2</CardHeader>
+              <CardHeader><h1>{carData[1] && carData[1].model}</h1></CardHeader>
               <CardBody>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Doloribus molestias cum perferendis suscipit commodi,
-                  voluptatum repellat rem sed dignissimos atque recusandae
-                  voluptas autem voluptatibus adipisci quos quo cumque aliquid?
-                  Quidem expedita nihil ipsum quae?
+                  {carData[1] && carData[1].description}
                 </p>
               </CardBody>
             </Card>
           </Col>
         </Row>
+        <hr />
         <Row className="mt-3">
             <Col>
                 <Card className="rounded-0">
-                    <CardHeader>Comparison</CardHeader>
-                    <CardBody>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur soluta eligendi reprehenderit nisi laudantium quo fugit. Perspiciatis, vel incidunt qui cupiditate odio mollitia suscipit possimus sunt amet placeat iure quae fugiat quo necessitatibus cum optio similique laborum, quidem consequatur. Praesentium totam sapiente doloribus quasi quo officia rerum nihil corrupti! A maiores ea cumque aliquid ipsa accusamus repudiandae asperiores quos. Ea facilis beatae praesentium repudiandae eaque laudantium in. Fugit explicabo aliquid numquam praesentium eveniet iure quo unde distinctio facere debitis. Eveniet possimus commodi dolorum perspiciatis magni accusamus dolore praesentium nesciunt. Maiores, minus et? Accusantium laboriosam voluptatum quod necessitatibus, repellendus illo. Minima quae illum iste exercitationem quo ipsum enim ut possimus, animi magni aspernatur eaque nam repellendus consequuntur fuga, eius distinctio vitae dicta ipsa atque! Ea quidem laborum earum aspernatur velit laboriosam tempore ducimus eveniet labore cumque accusantium consequatur inventore, quas amet harum illum autem reiciendis soluta? Ipsum, veritatis ea exercitationem eum laudantium quisquam laboriosam tenetur dicta ex. Possimus, necessitatibus id. Ducimus recusandae minima esse dolorem earum. Ducimus explicabo vel fugit facere! Dolorem est eum laborum impedit fugit aperiam minima architecto placeat cum mollitia, ratione, explicabo exercitationem expedita excepturi animi? Accusantium voluptates velit tempore temporibus tempora amet exercitationem voluptatem. Laborum, aliquam reprehenderit.</CardBody>
+                    <CardHeader><h1>Comparison</h1></CardHeader>
+                    <CardBody><p>{carComparisonData && carComparisonData.description}</p></CardBody>
                 </Card>
             </Col>
         </Row>

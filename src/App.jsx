@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Base from "./components/Base";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import ReadListing from "./pages/ReadListing";
+import ReadListing from "./components/ReadListing";
 import AddListing from "./pages/AddListing";
 import Login from "./pages/authentication/Login";
 import SignUp from "./pages/authentication/SignUp";

@@ -50,7 +50,11 @@ export default function ReadListing(props) {
               <Container>
                 <Row>
                   <Col lg="6">
-                    <img src={carData.image} alt="" className="w-100" />
+                    <img src={carData.image} alt="" className="w-100" style={
+                      {
+                        maxHeight: "80vh"
+                      }
+                    } />
                   </Col>
 
                   <Col lg="6">

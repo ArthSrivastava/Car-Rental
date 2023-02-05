@@ -60,6 +60,12 @@ export default function ComparisonPage() {
             <Card className="rounded-0">
               <CardHeader><h1>{carData[0] && carData[0].model}</h1></CardHeader>
               <CardBody>
+              {carData[0] && <img src={carData[0].image} alt="" srcset="" style={
+                {
+                  maxHeight: "60vh",
+                  width: "100%"
+                }
+              } />}
                 <p>
                   {carData[0] && carData[0].description}
                 </p>
@@ -70,6 +76,12 @@ export default function ComparisonPage() {
             <Card className="rounded-0">
               <CardHeader><h1>{carData[1] && carData[1].model}</h1></CardHeader>
               <CardBody>
+              {carData[1] && <img src={carData[1].image} alt="" srcset=""  style={
+                {
+                  maxHeight: "60vh",
+                  width: "100%"
+                }
+              } />}
                 <p>
                   {carData[1] && carData[1].description}
                 </p>
@@ -86,7 +98,7 @@ export default function ComparisonPage() {
                 </Card>
             </Col>
         </Row>
-        <Row className="mt-3">
+        {/* <Row className="mt-3">
           <Col
             md={{
               size: 6,
@@ -119,7 +131,7 @@ export default function ComparisonPage() {
               </CardBody>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </Base>
   );

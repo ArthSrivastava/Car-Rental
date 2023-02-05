@@ -84,7 +84,7 @@ export default function Listing({
                   size: 3
                 }
               }>
-                <Link to="/dashboard">{user.displayName}</Link>
+                <Link to="/dashboard">{user?.displayName}</Link>
               </Col>
               <Col
                 md={{
